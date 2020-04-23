@@ -8,7 +8,7 @@ import Dashboard from './components/dashboard.component';
 import ForgotPassword from './components/forgotpassword.component';
 import Homepage from './components/homepage.component';
 import TestComponent from './TestComponent';
-import { Jobs, Toolbar } from './components';
+import { Articles, Jobs, Toolbar } from './components';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -46,26 +46,29 @@ ReactDOM.render(
               <Route exact path="/">
                 <App />
               </Route>
-              <Route path="/homepage">
+              <Route exact path="/homepage">
                 <Homepage />
               </Route>
-              <Route path="/hello">
+              <Route exact path="/hello">
                 <TestComponent />
               </Route>
-              <Route path="/login">
+              <Route exact path="/login">
                 <Login />
               </Route>
-              <Route path="/register">
+              <Route exact path="/register">
                 <Register />
               </Route>
-              <Route path="/dashboard">
+              <Route exact path="/dashboard">
                 <Dashboard />
               </Route>
-              <Route path="/forgotPassword">
+              <Route exact path="/forgotPassword">
                 <ForgotPassword />
               </Route>
-              <Route path="/jobs">
+              <Route exact path="/jobs">
                 <Jobs />
+              </Route>
+              <Route exact path="/blog">
+                <Articles />
               </Route>
             </Switch>
           </Router>

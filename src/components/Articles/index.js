@@ -4,29 +4,29 @@ import { useJobs } from '../../lib/hooks';
 import List from '@material-ui/core/List';
 import Container from '@material-ui/core/Container';
 import Pagination from '@material-ui/lab/Pagination';
-import { JobsHeader, JobCard, JobsSkeleton } from './components';
+import { ArticleCard, ArticlesSkeleton } from './components';
 import { makeStyles } from '@material-ui/core/styles';
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 const useStyles = makeStyles({
   pagination: {
     justifyContent: 'center',
   },
   container: {
     minHeight: '100%',
-    width: '100%',
+    width: '66vw',
     padding: '16px',
   },
 });
 
-export const Jobs = () => {
+export const Articles = () => {
   const classes = useStyles();
   const [currentPage, setCurrentPage] = useState(1);
-  const [listings, loading, error] = useJobs();
+  const [articles, loading, error] = useJobs();
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
-  }, [currentPage, listings]);
+  }, [currentPage, articles]);
 
   const handlePageChange = (event, page) => {
     event.preventDefault();
@@ -34,23 +34,23 @@ export const Jobs = () => {
   };
 
   const dataSource =
-    listings.length > PAGE_SIZE
-      ? [...listings].splice((currentPage - 1) * PAGE_SIZE, PAGE_SIZE)
-      : [...listings];
+    articles.length > PAGE_SIZE
+      ? [...articles].splice((currentPage - 1) * PAGE_SIZE, PAGE_SIZE)
+      : [...articles];
 
   return (
     <Container classes={{ root: classes.container }}>
       <ErrorBanner error={error} message={error} />
-      <List subheader={<JobsHeader />}>
-        {loading && <JobsSkeleton />}
+      <List>
+        {loading && <ArticlesSkeleton />}
         {!loading &&
           dataSource &&
-          dataSource.map((item) => <JobCard job={item} />)}
+          dataSource.map((article) => <ArticleCard article={article} />)}
       </List>
       <Pagination
         count={
-          Math.floor(listings.length / PAGE_SIZE) +
-          (listings.length % PAGE_SIZE === 0 ? 0 : 1)
+          Math.floor(articles.length / PAGE_SIZE) +
+          (articles.length % PAGE_SIZE === 0 ? 0 : 1)
         }
         page={currentPage}
         onChange={handlePageChange}
