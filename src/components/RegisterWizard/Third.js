@@ -8,7 +8,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
 import Stats from './Stats';
 import Checkbox from '@material-ui/core/Checkbox';
-import MultiValuedSelect from '../MultivaluedSelect';
+import MultiValuedSelect from '../MultiValuedSelect';
 import { skillsData } from '../../constants';
 
 class Third extends React.Component {
@@ -137,6 +137,7 @@ class Third extends React.Component {
           <a
             href="https://www.northeastern.edu/privacy-information/"
             target="_blank"
+            rel="noopener noreferrer"
           >
             I agree the the Skunka.ai EULA
           </a>

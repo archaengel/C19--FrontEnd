@@ -4,5 +4,5 @@ export * from './Contributor';
 export * from './Footer';
 export * from './PrivacyPolicy';
 export * from './EULA';
-export { default as MultiValuedSelect } from './MultivaluedSelect';
+export { default as MultiValuedSelect } from './MultiValuedSelect';
 export { default as Dashboard } from './Dashboard';

@@ -9,7 +9,7 @@ import { Row, Col } from 'reactstrap';
 import { FaUserEdit } from 'react-icons/fa';
 import { FaSave } from 'react-icons/fa';
 import { GiCancel } from 'react-icons/gi';
-import MultiValuedSelect from './MultivaluedSelect';
+import MultiValuedSelect from './MultiValuedSelect';
 import { skillsData } from '../constants';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -131,7 +131,7 @@ class Profile extends React.Component {
   componentWillMount() {
     const { cookies, getUserInfo } = this.props;
     const accessInfo = cookies.get('access_info');
-    if (accessInfo != undefined) {
+    if (accessInfo !== undefined) {
       ///user logged in
       getUserInfo(accessInfo.userid, accessInfo.token);
     } else {
