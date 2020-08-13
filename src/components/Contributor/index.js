@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { ErrorBanner } from '../../lib/components';
 import { Toolbar } from '../../components';
 import { ContributorCard, ContributorSkeleton } from './components';
-import { getContributors } from '../../lib/api';
+import { getContributors } from '../../lib/api/getContributors';
 import { useQuery } from 'react-query';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
@@ -24,24 +24,22 @@ const useStyles = makeStyles({
 
 export const Contributor = () => {
   const classes = useStyles();
-  const { data, isFetching, status, error } = useQuery(
-    'contributors',
-    getContributors,
-    {
-      staleTime: 1000 * 30,
-      refetchOnWindowFocus: false,
-      onError: (err) => {
-        if (err.response.status === 404) {
-          console.log(err.response);
-        }
-      },
-    }
+  const {data, isFetching, status, error} = useQuery('contributors', getContributors,
+  {
+    staleTime: 1000 * 30,
+    refetchOnWindowFocus: false,
+    onError: (err) => {
+      if (err.response.status === 404) {
+        console.log(err.response);
+      }
+    },
+  }
   );
 
   if (status === 'loading') {
     return (
       <Container classes={{ root: classes.container }}>
-        <ContributorSkeleton />
+       <ContributorSkeleton />
       </Container>
     );
   }
@@ -59,36 +57,35 @@ export const Contributor = () => {
     return [...contributorsParam].sort(function (a, b) {
       // Turn your strings into dates, and then subtract them
       // to get a value that is either negative, positive, or zero.
-      if (b.skill > a.skill) {
-        return -1;
-      }
-      if (b.skill < a.skill) {
-        return 1;
-      }
-      return -1;
+      if(b.skill > a.skill)
+      {return -1;}
+      if(b.skill < a.skill)
+      {return 1;}
+       return -1;
     });
-  };
+};
 
-  const dataSource = sortContributors(data);
+const dataSource = sortContributors(data);
 
   return (
     <Container classes={{ root: classes.container }}>
       <Toolbar />
       <AppBar position="relative">
-        <Typography variant="h5" component="h1" color="inherit" noWrap>
-          Contributor
-        </Typography>
+          <Typography variant="h5" component="h1" color="inherit" noWrap>
+            Contributor
+          </Typography> 
       </AppBar>
       <GridList cellHeight={280} className={classes.gridList} cols={2}>
-        {isFetching && <ContributorSkeleton />}
+      {isFetching && <ContributorSkeleton />}
         {!isFetching &&
-          data &&
-          dataSource.map((tile) => (
-            <GridListTile key={tile.name}>
-              <ContributorCard contributor={tile} />
-            </GridListTile>
-          ))}
+         data &&
+         dataSource.map((tile) => (
+          <GridListTile key={tile.name}>
+           <ContributorCard contributor = {tile}/>
+          </GridListTile>
+        ))}
       </GridList>
+      
     </Container>
   );
 };
