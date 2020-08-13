@@ -42,7 +42,7 @@ class Homepage extends React.Component {
           </div>
           {/* buttons */}
           <div id="skunks-btn">
-            <h1 id="title-heading">Hire expert freelancers for any job....</h1>
+            <h1 id="title-heading">Find expert freelancers for any job....</h1>
             <Button variant="contained" color="secondary" id="researcher-btn">
               I am a COVID 19 First Responder/Researcher
             </Button>
