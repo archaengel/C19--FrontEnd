@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ErrorBanner } from '../../lib/components';
 import { Toolbar } from '../../components';
 import { ContributorCard, ContributorSkeleton } from './components';
-import { getContributors } from '../../lib/api';
+import { getContributors } from '../../lib/api/getContributors';
 import { useQuery } from 'react-query';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';

@@ -8,7 +8,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
 import Stats from './Stats';
 import Checkbox from '@material-ui/core/Checkbox';
-import MultiValuedSelect from '../MultiValuedSelect';
+import MultiValuedSelect from '../MultivaluedSelect';
 import { skillsData } from '../../constants';
 
 class Third extends React.Component {
