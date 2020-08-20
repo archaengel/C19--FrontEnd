@@ -42,9 +42,11 @@ class Homepage extends React.Component {
           </div>
           {/* buttons */}
           <div id="skunks-btn">
-            <h1 id="title-heading">Find expert freelancers for any job....</h1>
+            <h1 id="title-heading">
+              Connect with volunteers for any projects...
+            </h1>
             <Button variant="contained" color="secondary" id="researcher-btn">
-              I am a COVID 19 First Responder/Researcher
+              I am a Researcher
             </Button>
             <Button
               onClick={this.handleVolunteer}
@@ -52,7 +54,7 @@ class Homepage extends React.Component {
               color="secondary"
               id="volunteer-btn"
             >
-              I want to Volunteer Freelance
+              I want to Volunteer
             </Button>
           </div>
         </div>
